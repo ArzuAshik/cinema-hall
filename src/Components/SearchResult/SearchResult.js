@@ -16,7 +16,6 @@ const SearchResult = () => {
         .then((response) => response.json())
         .then(data => {
             setMovies(data);
-            console.log(data);
             setIsLoading(false);
         });
     }, [searchDateTime])

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { MdEventSeat } from "react-icons/md";
 import { SearchDateTimeContext } from '../../App';
-import { setSeatStatus, handelSelectSeat, handleConfirmBooking, seatName} from '../../functions';
+import { setSeatStatus, handleConfirmBooking, seatName, handelSelectSeat} from '../../functions';
 import { MoonLoader } from 'react-spinners';
 
 const Booking = () => {
@@ -32,7 +32,7 @@ const Booking = () => {
             setSeatStatus(data.bookedSeats, seats, setBookedSeats, setSeats);
             setIsLoading(false);
         });
-    }, [isLoading, id, searchDateTime.time, seats])
+    }, [isLoading])
 
     return (
         <div className="container">
@@ -67,22 +67,22 @@ const Booking = () => {
                         </div>
                         <div className="seats my-3">
                             {
-                                rowOne.map((seat, index) => <MdEventSeat color={seatColor[seats[index+0]]} onClick={() => handelSelectSeat(index+0, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
+                                rowOne.map((seat, index) => <MdEventSeat key={index} color={seatColor[seat]} onClick={() => handelSelectSeat(index+0, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
                             }
                         </div>
                         <div className="seats my-3">
                             {
-                                rowTwo.map((seat, index) => <MdEventSeat color={seatColor[seats[index+10]]} onClick={() => handelSelectSeat(index+10, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
+                                rowTwo.map((seat, index) => <MdEventSeat key={index} color={seatColor[seat]} onClick={() => handelSelectSeat(index+10, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
                             }
                         </div>
                         <div className="seats my-3">
                             {
-                                rowThree.map((seat, index) => <MdEventSeat color={seatColor[seats[index+20]]} onClick={() => handelSelectSeat(index+20, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
+                                rowThree.map((seat, index) => <MdEventSeat key={index} color={seatColor[seat]} onClick={() => handelSelectSeat(index+20, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
                             }
                         </div>
                         <div className="seats my-3">
                             {
-                                rowFour.map((seat, index) => <MdEventSeat color={seatColor[seats[index+30]]} onClick={() => handelSelectSeat(index+30, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
+                                rowFour.map((seat, index) => <MdEventSeat key={index} color={seatColor[seat]} onClick={() => handelSelectSeat(index+30, seats, setSeats, selectedSeats, setSelectedSeats)} size="2.5em"/>)
                             }
                         </div>
                     </div>

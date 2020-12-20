@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SearchItem = ({movie}) => {    
-    console.log(movie);
+const SearchItem = ({movie}) => {
     return (
         <div className="col-md-3">
             <div className="card mb-3">
