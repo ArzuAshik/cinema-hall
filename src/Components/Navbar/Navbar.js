@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { SearchDateTimeContext } from '../../App';
 
 const Navbar = () => {
@@ -39,23 +40,23 @@ console.log(searchDateTime);
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="col-md-4">
-                <a className="navbar-brand" href="#">Cinema Ticket</a>
+                <Link to="/" className="navbar-brand">Cinema Ticket</Link>
             </div>
             <div className="col-md-8">
                 <div className="search">
                     <form onSubmit={(e) => handleSearch(e)} className="form-inline">
-                        <select onChange={(e) => handleSelectDateTime(e)} name="date" className="form-control mx-2">
+                        <select onChange={(e) => handleSelectDateTime(e)} name="date" className="form-control m-2">
                             {
                                 dates.map(date => <option key={date} value={date}>{date}</option>)
                             }
                         </select>
-                        <select onChange={(e) => handleSelectDateTime(e)} name="time" className="form-control mx-2">
+                        <select onChange={(e) => handleSelectDateTime(e)} name="time" className="form-control m-2">
                             <option value="1">10AM to 12AM</option>
                             <option value="2">1PM to 3PM</option>
                             <option value="3">5PM to 7PM</option>
                             <option value="4">9PM to 11PM</option>
                         </select>
-                        <button className="btn btn-primary" type="submit">Search</button>
+                        <button className="btn btn-primary m-2" type="submit">Search</button>
                     </form>
                 </div>
             </div>

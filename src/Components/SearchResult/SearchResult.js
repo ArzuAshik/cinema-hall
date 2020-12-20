@@ -35,7 +35,9 @@ const SearchResult = () => {
             </div>
         </div>
         :
-            <p>Please Select a Date</p>
+            <div className="search-msg">
+                <p>Please Select a Date</p>
+            </div>
         
     );
 };
