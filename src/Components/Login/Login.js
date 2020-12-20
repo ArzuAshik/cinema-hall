@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import './Login.css';
-import Navbar from '../Navbar/Navbar';
 import { UserContext } from '../../App';
 
 import googleIcon from '../../Icon/google.png';

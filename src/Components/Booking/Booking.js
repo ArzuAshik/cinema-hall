@@ -6,11 +6,21 @@ import { setSeatStatus, handelSelectSeat, handleConfirmBooking, seatName} from '
 import { MoonLoader } from 'react-spinners';
 
 const Booking = () => {
-    const [searchDateTime, setSearchDateTime] = useContext(SearchDateTimeContext);
+    const [searchDateTime] = useContext(SearchDateTimeContext);
     const [movieInfo, setMovieInfo] = useState("");
     const [bookedSeats, setBookedSeats] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [seats, setSeats] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    const [selectedSeats, setSelectedSeats] = useState([]);
     const { id } = useParams();
+    
+    
+    const rowOne = seats.slice(0, 10);
+    const rowTwo = seats.slice(10, 20);
+    const rowThree = seats.slice(20, 30);
+    const rowFour = seats.slice(30);
+    
+    const seatColor = ["gray", "red", "green"];
     useEffect(() =>{
         fetch(`https://ar-cinema-hall-server.herokuapp.com/movie/${id}`)
         .then(response => response.json())
@@ -22,16 +32,7 @@ const Booking = () => {
             setSeatStatus(data.bookedSeats, seats, setBookedSeats, setSeats);
             setIsLoading(false);
         });
-    }, [isLoading])
-    const [seats, setSeats] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-    const [selectedSeats, setSelectedSeats] = useState([]);
-    
-    const rowOne = seats.slice(0, 10);
-    const rowTwo = seats.slice(10, 20);
-    const rowThree = seats.slice(20, 30);
-    const rowFour = seats.slice(30);
-    
-    const seatColor = ["gray", "red", "green"];
+    }, [isLoading, id, searchDateTime.time, seats])
 
     return (
         <div className="container">
@@ -48,7 +49,7 @@ const Booking = () => {
                             <h2>{movieInfo.title}</h2>
                             <h4>Date: {searchDateTime.date}</h4>
                             <h4>Time: {searchDateTime.time}</h4>
-                            <h4>Available Seats: {isLoading ? "..." : bookedSeats.length == 40 ? "HouseFull" : 40 - bookedSeats.length}</h4>
+                            <h4>Available Seats: {isLoading ? "..." : bookedSeats.length === 40 ? "HouseFull" : 40 - bookedSeats.length}</h4>
                             <h4>Price: 500Tk / Seat</h4>
                         </div>
                     </div>
