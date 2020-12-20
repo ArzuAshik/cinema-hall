@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SearchDateTimeContext } from '../../App';
+import { SearchDateTimeContext, UserContext } from '../../App';
+import { handleSelectDateTime, handleSearch, findDate } from '../../functions';
 
 const Navbar = () => {
     const dates = [];
@@ -8,57 +9,37 @@ const Navbar = () => {
         dates.push(findDate(i));
     }
     const [searchDateTime, setSearchDateTime] = useContext(SearchDateTimeContext);
-    const [selectedDateTime, setSelectedDateTime] = useState({date: dates[0], time: "1"});
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
-    // eventHandlers
-    function handleSelectDateTime(e){
-        let newDateTime = {...selectedDateTime};
-        newDateTime[e.target.name] = e.target.value;
-        setSelectedDateTime(newDateTime);
-    }
-    function handleSearch(e){
-        e.preventDefault();
-        setSearchDateTime(selectedDateTime);
-    }
+    const [selectedDateTime, setSelectedDateTime] = useState({date: dates[0], time: "10AM to 12AM"});
 
-    // functions
-    function findDate(next) {
-        let nextDay = new Date();
-        nextDay.setDate(nextDay.getDate() + next);
-        const fullDate = `${nextDay.getDate()} ${findMonth(nextDay.getMonth())} ${nextDay.getFullYear()}`;
-        return fullDate;
-    }
-
-    function findMonth(month){
-        const monthString = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        return monthString[month];
-    }
-    
-
-// test
-console.log(searchDateTime);
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="col-md-4">
+            <div className="col-md-3">
                 <Link to="/" className="navbar-brand">Cinema Ticket</Link>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-6">
                 <div className="search">
-                    <form onSubmit={(e) => handleSearch(e)} className="form-inline">
-                        <select onChange={(e) => handleSelectDateTime(e)} name="date" className="form-control m-2">
+                    <form onSubmit={(e) => handleSearch(selectedDateTime, setSearchDateTime, e)} className="form-inline">
+                        <select onChange={(e) => handleSelectDateTime(selectedDateTime, setSelectedDateTime, e)} name="date" className="form-control m-2">
                             {
                                 dates.map(date => <option key={date} value={date}>{date}</option>)
                             }
                         </select>
-                        <select onChange={(e) => handleSelectDateTime(e)} name="time" className="form-control m-2">
-                            <option value="1">10AM to 12AM</option>
-                            <option value="2">1PM to 3PM</option>
-                            <option value="3">5PM to 7PM</option>
-                            <option value="4">9PM to 11PM</option>
+                        <select onChange={(e) => handleSelectDateTime(selectedDateTime, setSelectedDateTime, e)} name="time" className="form-control m-2">
+                            <option value="10AM to 12AM">10AM to 12AM</option>
+                            <option value="1PM to 3PM">1PM to 3PM</option>
+                            <option value="5PM to 7PM">5PM to 7PM</option>
+                            <option value="9PM to 11PM">9PM to 11PM</option>
                         </select>
                         <button className="btn btn-primary m-2" type="submit">Search</button>
                     </form>
                 </div>
+            </div>
+            <div className="col-md-3">
+                {
+                loggedInUser.email ? loggedInUser.email : <Link to="/login">Login</Link>
+            }
             </div>
             
         </nav>

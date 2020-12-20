@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { SearchDateTimeContext } from '../../App';
 
-const SearchItem = ({movie}) => {
-    const [searchDateTime, setSearchDateTime] = useContext(SearchDateTimeContext);
+const SearchItem = ({movie}) => {    
+    console.log(movie);
     return (
-        <div className="card mb-3">
-            <img src="https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg" alt="" className="card-img-top"></img>
-        <div className="card-body">
-        <h5 className="card-title">{searchDateTime.date}</h5>
+        <div className="col-md-3">
+            <div className="card mb-3">
+                <img src={movie.img}></img>
+                <div className="card-body">
+                    <h5 className="card-title"><Link to={`/booking/${movie._id}`}>{movie.title}</Link></h5>
+                </div>
+            </div>
         </div>
-        </div>
-    );
+);
 };
 
 export default SearchItem;
