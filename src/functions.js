@@ -65,6 +65,7 @@ export function handleConfirmBooking(selectedSeats, setSelectedSeats, movieID, s
         headers: { "Content-type": "application/json; charset=UTF-8" }
     }).then(response => response.json())
     .then(result => {        
+        alert("Thanks For Booking.")
         setSelectedSeats([]);
     })
 }

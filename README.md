@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+# Online Cinema Ticket Booking Webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Links: [Live](https://ar-cinema-hall.web.app/) | [Backend Repository](https://github.com/ArzuAshik/cinema-hall-server/)
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Google Authentication
+- একজন ব্যবহারকারী তারিখ এবং সময়ের ভিত্তিতে সিনেমা খুজতে পারবে।
+- ব্যবহারকারী শুধুমাত্র বর্তমান তারিখ এবং পরবর্তি আরো দুই দিনের উপলব্ধ সিনেমার তালিকা দেখতে পারবে।
+- প্রত্যেক সিনেমার জন্য সর্বমোট ৪০টি আসন উপলব্ধ আছে।
+- উপলব্ধ আসন, সংরক্ষিত আসন এবং নির্বাচনকৃত আসন ভিন্ন ভিন্ন রং দ্বারা বুঝানো হয়েছে।
+- সংরক্ষিত আসন নির্বাচনকৃত করা যাবে না।
+- শুধুমাত্র উপলব্ধ আসন নির্বাচন করা যাবে।
+- একজন ব্যবহারকারী একসাথে সর্বোচ্চ ১০টি আসন সংরক্ষণ করতে পারবে।
+- একটি সিনেমার সবগুলি আসন সংরক্ষিত হয়ে গেলে "HouleFull" বার্তাটি দেখবে।
+- ব্যবহারকারী তার নির্বাচনকৃত আসনের নাম্বার দেখতে পারবে। (A1 - A10, B1 - B10, C1 - C10, D1 - D10)
