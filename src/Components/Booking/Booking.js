@@ -95,7 +95,7 @@ const Booking = () => {
                             selectedSeats.map(index => <span key={index} className="badge badge-secondary mx-2">{seatName(index)}</span>)
                             }
                         </p>
-                        <button onClick={() => handleConfirmBooking(selectedSeats, setSelectedSeats, id, searchDateTime, bookedSeats, setIsLoading)} className="btn btn-primary">Confirm Booking</button>
+                        <button disabled={selectedSeats.length ? false : true} onClick={() => handleConfirmBooking(selectedSeats, setSelectedSeats, id, searchDateTime, bookedSeats, setIsLoading)} className="btn btn-primary">Confirm Booking</button>
                     </div>
                 </div>
             }
