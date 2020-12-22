@@ -4,7 +4,7 @@ import { SearchDateTimeContext, UserContext } from '../../App';
 import { handleSelectDateTime, handleSearch, findDate } from '../../functions';
 
 const Navbar = () => {
-    const dates = ["s"];
+    const dates = [];
     for(let i = 0; i < 3; i++) {
         dates.push(findDate(i));
     }
