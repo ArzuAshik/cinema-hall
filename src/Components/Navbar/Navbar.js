@@ -11,7 +11,7 @@ const Navbar = () => {
     const [searchDateTime, setSearchDateTime] = useContext(SearchDateTimeContext);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
-    const [selectedDateTime, setSelectedDateTime] = useState({date: dates[0], time: "10AM to 12AM"});
+    const [selectedDateTime, setSelectedDateTime] = useState(searchDateTime);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,12 +21,12 @@ const Navbar = () => {
             <div className="col-md-6">
                 <div className="search">
                     <form onSubmit={(e) => handleSearch(selectedDateTime, setSearchDateTime, e)} className="form-inline">
-                        <select onChange={(e) => handleSelectDateTime(selectedDateTime, setSelectedDateTime, e)} name="date" className="form-control m-2">
+                        <select value={selectedDateTime.date} onChange={(e) => handleSelectDateTime(selectedDateTime, setSelectedDateTime, e)} name="date" className="form-control m-2">
                             {
                                 dates.map(date => <option key={date} value={date}>{date}</option>)
                             }
                         </select>
-                        <select onChange={(e) => handleSelectDateTime(selectedDateTime, setSelectedDateTime, e)} name="time" className="form-control m-2">
+                        <select value={selectedDateTime.time} onChange={(e) => handleSelectDateTime(selectedDateTime, setSelectedDateTime, e)} name="time" className="form-control m-2">
                             <option value="10AM to 12AM">10AM to 12AM</option>
                             <option value="1PM to 3PM">1PM to 3PM</option>
                             <option value="5PM to 7PM">5PM to 7PM</option>

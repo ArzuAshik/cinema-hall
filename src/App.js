@@ -6,12 +6,13 @@ import Booking from './Components/Booking/Booking';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Login from './Components/Login/Login';
 import NotFound from './Components/NotFound/NotFound';
+import { findDate } from './functions';
 
 
 export const SearchDateTimeContext = createContext();
 export const UserContext = createContext();
 function App() {
-  const [searchDateTime, setSearchDateTime] = useState({});
+  const [searchDateTime, setSearchDateTime] = useState({date: findDate(0), time: "10AM to 12AM"});
   const [loggedInUser, setLoggedInUser] = useState({ email: '' });
   return (
     <SearchDateTimeContext.Provider value={[searchDateTime, setSearchDateTime]}>

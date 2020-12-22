@@ -8,6 +8,7 @@ const SearchResult = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() =>{
+        setIsLoading(true);
         fetch("https://ar-cinema-hall-server.herokuapp.com/movies",{
             method: "POST",
             body: JSON.stringify({ date: searchDateTime.date }),
