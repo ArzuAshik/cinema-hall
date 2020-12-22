@@ -52,21 +52,22 @@ export function handelSelectSeat(seatIndex, seats, setSeats, selectedSeats, setS
     }
 }
 
-export function handleConfirmBooking(selectedSeats, setSelectedSeats, movieID, searchDateTime, bookedSeats, setIsLoading){
+export function handleConfirmBooking(selectedSeats, setSelectedSeats, movieID, searchDateTime, bookedSeats, setIsLoading, movieTitle, email){
     setIsLoading(true);
+    setSelectedSeats([]);
     selectedSeats.length && fetch(`https://ar-cinema-hall-server.herokuapp.com/confirm-booking`,{
         method: "POST",
         body: JSON.stringify({ 
-            movieID, 
+            movieID,
+            movieTitle,
+            email,
+            showDate: searchDateTime.date,
             time: searchDateTime.time,
+            selectedSeats: [...selectedSeats],
             bookedSeats: [...bookedSeats, ...selectedSeats], 
             availableSeats: 40 - bookedSeats,
          }),
         headers: { "Content-type": "application/json; charset=UTF-8" }
-    }).then(response => response.json())
-    .then(result => {        
-        alert("Thanks For Booking.")
-        setSelectedSeats([]);
     })
 }
 

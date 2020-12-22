@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { MdEventSeat } from "react-icons/md";
-import { SearchDateTimeContext } from '../../App';
+import { SearchDateTimeContext, UserContext } from '../../App';
 import { setSeatStatus, handleConfirmBooking, seatName, handelSelectSeat} from '../../functions';
 import { MoonLoader } from 'react-spinners';
 
 const Booking = () => {
     const [searchDateTime] = useContext(SearchDateTimeContext);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [movieInfo, setMovieInfo] = useState("");
     const [bookedSeats, setBookedSeats] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +34,7 @@ const Booking = () => {
             setIsLoading(false);
         });
     }, [isLoading])
-
+    
     return (
         <div className="container">
             <header>
@@ -95,7 +96,7 @@ const Booking = () => {
                             selectedSeats.map(index => <span key={index} className="badge badge-secondary mx-2">{seatName(index)}</span>)
                             }
                         </p>
-                        <button disabled={selectedSeats.length ? false : true} onClick={() => handleConfirmBooking(selectedSeats, setSelectedSeats, id, searchDateTime, bookedSeats, setIsLoading)} className="btn btn-primary">Confirm Booking</button>
+                        <button disabled={selectedSeats.length ? false : true} onClick={() => handleConfirmBooking(selectedSeats, setSelectedSeats, id, searchDateTime, bookedSeats, setIsLoading, movieInfo.title, loggedInUser.email)} className="btn btn-primary">Confirm Booking</button>
                     </div>
                 </div>
             }
