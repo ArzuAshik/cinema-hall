@@ -14,3 +14,4 @@ Links: [Live](https://ar-cinema-hall.web.app/) | [Backend Repository](https://gi
 - একজন ব্যবহারকারী একসাথে সর্বোচ্চ ১০টি আসন সংরক্ষণ করতে পারবে।
 - একটি সিনেমার সবগুলি আসন সংরক্ষিত হয়ে গেলে "HouleFull" বার্তাটি দেখবে।
 - ব্যবহারকারী তার নির্বাচনকৃত আসনের নাম্বার দেখতে পারবে। (A1 - A10, B1 - B10, C1 - C10, D1 - D10)
+- আসন সংরক্ষণ নিশ্চিত করার পর ব্যবহার কারি একটি PDF File পাবে যেখানে তার আসন বুকিং সম্পর্কিত সমস্ত তথ্য উল্লেখ থাকবে। (Email, Movie Title, Booking Date, Movie Date and Time, Total Booked Seat, Seat Number, Total Price)
