@@ -27,7 +27,7 @@ const Booking = () => {
         .then(response => response.json())
         .then(data => setMovieInfo(data));
 
-        fetch(`https://ar-cinema-hall-server.herokuapp.com/booking-info?movieID=${id}&time=${searchDateTime.time}`)
+        fetch(`https://ar-cinema-hall-server.herokuapp.com/booking-info?movieID=${id}&showDate=${searchDateTime.date}&time=${searchDateTime.time}`)
         .then(response => response.json())
         .then(data => {
             setSeatStatus(data.bookedSeats, seats, setBookedSeats, setSeats);

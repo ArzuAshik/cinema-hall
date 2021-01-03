@@ -59,15 +59,24 @@ export function handleConfirmBooking(selectedSeats, setSelectedSeats, movieID, s
         method: "POST",
         body: JSON.stringify({ 
             movieID,
+            showDate: searchDateTime.date,
+            time: searchDateTime.time,
+            bookedSeats: [...bookedSeats, ...selectedSeats], 
+            availableSeats: 40 - bookedSeats.length,
+         }),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    }).then(() => {
+        fetch(`https://ar-cinema-hall-server.herokuapp.com/get-pdf`,{
+        method: "POST",
+        body: JSON.stringify({
             movieTitle,
             email,
             showDate: searchDateTime.date,
             time: searchDateTime.time,
-            selectedSeats: [...selectedSeats],
-            bookedSeats: [...bookedSeats, ...selectedSeats], 
-            availableSeats: 40 - bookedSeats,
+            selectedSeats: [...selectedSeats]
          }),
         headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
     })
 }
 
